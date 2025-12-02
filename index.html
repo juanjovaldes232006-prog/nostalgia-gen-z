@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Generación Z Atrapada en la Nostalgia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: repeating-linear-gradient(
+                0deg,
+                #1db19f 0px,
+                #1db19f 2px,
+                #15a092 2px,
+                #15a092 4px
+            );
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Elementos decorativos pixelados */
+        .vinyl {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #333 30%, #000 31%, #000 50%, #4169e1 51%, #4169e1 70%, #000 71%);
+            border-radius: 50%;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+        }
+
+        .smiley {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            width: 70px;
+            height: 70px;
+            background: white;
+            border: 4px solid #000;
+            border-radius: 50%;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+        }
+
+        .smiley::before,
+        .smiley::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #000;
+            border-radius: 50%;
+            top: 20px;
+        }
+
+        .smiley::before {
+            left: 15px;
+        }
+
+        .smiley::after {
+            right: 15px;
+        }
+
+        .computer {
+            position: absolute;
+            top: 8%;
+            right: 5%;
+            width: 90px;
+            height: 70px;
+            background: #e0e0e0;
+            border: 4px solid #000;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+        }
+
+        .computer::before {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 50%;
+            background: #00cccc;
+            top: 8px;
+            left: 15%;
+            border: 2px solid #000;
+        }
+
+        .computer::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 8px;
+            background: #999;
+            bottom: -12px;
+            left: 25%;
+            border: 2px solid #000;
+        }
+
+        .spiral {
+            position: absolute;
+            bottom: 15%;
+            right: 8%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #ff00ff 0%, #ff00ff 20%, #9932cc 21%, #9932cc 40%, #ff00ff 41%);
+            border-radius: 50%;
+            border: 4px solid #000;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+        }
+
+        .warning-sign {
+            position: absolute;
+            bottom: 25%;
+            left: 8%;
+            width: 0;
+            height: 0;
+            border-left: 35px solid transparent;
+            border-right: 35px solid transparent;
+            border-bottom: 60px solid #ffff00;
+            filter: drop-shadow(5px 5px 0 rgba(0,0,0,0.3));
+        }
+
+        .warning-sign::after {
+            content: '⚠';
+            position: absolute;
+            font-size: 40px;
+            color: #000;
+            left: -18px;
+            top: 10px;
+        }
+
+        .cursor {
+            position: absolute;
+            bottom: 30%;
+            left: 45%;
+            width: 0;
+            height: 0;
+            border-left: 25px solid #fff;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.5));
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .btn {
+            background: #ffff00;
+            border: 6px solid #000;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #0000ff;
+            cursor: pointer;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.4);
+            text-transform: uppercase;
+            transition: all 0.1s;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
+        }
+
+        .btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+        }
+
+        .main-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 900px;
+        }
+
+        .header {
+            background: #00ff00;
+            border: 8px solid #0000ff;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: clamp(24px, 5vw, 48px);
+            color: #0000ff;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+            line-height: 1.2;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+            border: 8px solid #ff00ff;
+            padding: 60px 40px;
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .banner h2 {
+            font-size: clamp(32px, 6vw, 72px);
+            color: #ff0000;
+            text-shadow: 5px 5px 0 #00ffff, -2px -2px 0 #000;
+            line-height: 1.1;
+        }
+
+        .under-construction {
+            position: absolute;
+            bottom: 5%;
+            right: 5%;
+            background: #ffff00;
+            border: 5px solid #000;
+            padding: 15px 25px;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
+            transform: rotate(-5deg);
+        }
+
+        .under-construction h3 {
+            font-size: 20px;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .under-construction p {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            background: repeating-linear-gradient(
+                45deg,
+                #ffff00,
+                #ffff00 10px,
+                #000 10px,
+                #000 20px
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Ventanas emergentes estilo Windows 95 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: #c0c0c0;
+            margin: 5% auto;
+            border: 3px solid #000;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .modal-header {
+            background: linear-gradient(to right, #000080, #1084d0);
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            padding-left: 5px;
+        }
+
+        .close-btn {
+            background: #c0c0c0;
+            border: 2px outset #fff;
+            width: 25px;
+            height: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 16px;
+        }
+
+        .close-btn:active {
+            border-style: inset;
+        }
+
+        .modal-body {
+            padding: 20px;
+            background: white;
+            border: 2px inset #808080;
+            margin: 3px;
+            max-height: 70vh;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .modal-body h3 {
+            color: #000080;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .modal-body ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Video modal */
+        .video-modal-content {
+            max-width: 900px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .vinyl, .smiley, .computer, .spiral, .warning-sign, .cursor {
+                display: none;
+            }
+
+            .btn {
+                font-size: 20px;
+                padding: 15px 30px;
+                min-width: 160px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .banner {
+                padding: 40px 20px;
+            }
+
+            .under-construction {
+                bottom: 2%;
+                right: 2%;
+                padding: 10px 15px;
+            }
+
+            .under-construction h3 {
+                font-size: 16px;
+            }
+
+            .under-construction p {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Elementos decorativos -->
+    <div class="vinyl"></div>
+    <div class="smiley"></div>
+    <div class="computer"></div>
+    <div class="spiral"></div>
+    <div class="warning-sign"></div>
+    <div class="cursor"></div>
+    <div class="under-construction">
+        <h3>UNDER</h3>
+        <p>CONSTRUCTION</p>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <button class="btn" onclick="openModal('nostalgiaModal')">Nostalgia</button>
+            <button class="btn" onclick="openModal('nosotrosModal')">Nosotros</button>
+            <button class="btn" onclick="openModal('videoModal')">Video</button>
+            <button class="btn" onclick="window.open('filtros.html', '_blank')">Filtros</button>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>LA GENERACIÓN Z ATRAPADA EN LA NOSTALGIA??</h1>
+            </div>
+
+            <div class="banner">
+                <h2>NOSTALGIA<br>VICARIA</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nostalgia -->
+    <div id="nostalgiaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Nostalgia Vicaria - Gen Z</span>
+                <button class="close-btn" onclick="closeModal('nostalgiaModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <h3>1. ¿Qué es la nostalgia vicaria y por qué afecta a la Gen Z?</h3>
+                <p>La Generación Z siente nostalgia por épocas que no vivió porque las redes sociales les presentan un pasado filtrado y afectivo. Según Ankersmit (2019), la nostalgia funciona como un modo de usar el presente para dar realidad a un pasado idealizado:</p>
+                <p><em>"Se aprovecha la realidad presente para respaldar la realidad de un pasado recordado con nostalgia" (p. 29).</em></p>
+                <p>Esta nostalgia no viene de recuerdos propios, sino de imágenes, música, objetos retro, filtros y estéticas que circulan en TikTok, Instagram o Pinterest.</p>
+                <p>Durante la pandemia, el consumo de contenidos retro creció porque evocaba "los buenos viejos tiempos", ofreciendo estabilidad emocional. (Sánchez, 2024)</p>
+
+                <h3>2. El simulacro: un pasado más real que el real</h3>
+                <p>El documento explica que la Gen Z no añora los 90 o 2000 tal como fueron, sino una versión recreada por internet. Siguiendo a Baudrillard (1981), este pasado es un simulacro: una copia que parece más auténtica que la historia misma. La estética retro se vuelve un refugio frente al exceso de información y la aceleración del presente.</p>
+
+                <h3>3. Memoria colectiva: "recordar" cosas que no vivimos</h3>
+                <p>Basado en Halbwachs (1925), el documento explica que los jóvenes aprenden a "recordar" épocas no vividas porque la memoria se construye socialmente. Las plataformas se vuelven nuevas comunidades de memoria, donde lo retro circula como un recuerdo compartido, no personal.</p>
+
+                <h3>4. Identidad digital: lo retro como forma de ser alguien</h3>
+                <p>La identidad en redes no es un reflejo del yo, sino una estrategia creada a partir de estéticas, símbolos y narrativas.</p>
+                <p>Para Francisco Yus (s.f.), la identidad en redes es una "identidad interactiva": El usuario es un "yo" especial pero también parte de un "nosotros", moldeado por la plataforma y su comunidad (p. 5).</p>
+                <p>Lo retro sirve como lenguaje identitario, porque:</p>
+                <ul>
+                    <li>transmite autenticidad,</li>
+                    <li>genera pertenencia,</li>
+                    <li>diferencia al usuario dentro de un entorno saturado de imágenes.</li>
+                </ul>
+                <p>Según Dans (2015), las redes permiten a los jóvenes reafirmar su "yo" y su "nosotros" simultáneamente.</p>
+
+                <h3>5. ¿Qué propone el proyecto?</h3>
+                <p>El audiovisual "La generación Z atrapada en la nostalgia" investiga y muestra cómo:</p>
+                <ul>
+                    <li>lo retro es un mecanismo emocional,</li>
+                    <li>funciona como refugio simbólico,</li>
+                    <li>ayuda a los jóvenes a construir identidad en la era digital.</li>
+                </ul>
+                <p>El protagonista, Demetrio, vive en un espacio retro que se desestabiliza, reflejando cómo la nostalgia vicaria es una ilusión creada por el mundo digital.</p>
+
+                <h3>6. Conclusión esencial</h3>
+                <p>La nostalgia de la Gen Z no es real, es construida por las plataformas digitales. Sin embargo, sí cumple una función real:</p>
+                <ul>
+                    <li>da estabilidad,</li>
+                    <li>crea sentido,</li>
+                    <li>fortalece la identidad digital,</li>
+                    <li>y funciona como herramienta emocional frente a un presente acelerado.</li>
+                </ul>
+                <p><strong>Lo retro es más que una estética: es una forma de autoconstrucción y pertenencia en un mundo saturado y cambiante.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nosotros -->
+    <div id="nosotrosModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Acerca de Nosotros</span>
+                <button class="close-btn" onclick="closeModal('nosotrosModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <h3>LA GENERACIÓN Z ATRAPADA EN LA NOSTALGIA</h3>
+                <p><strong>Licenciatura en Arte y Comunicación Digital</strong></p>
+                <p><strong>UEA IV. Estética y prácticas del arte digital contemporáneo</strong></p>
+                <p><strong>Trimestre 25-I</strong></p>
+                <p><strong>Eje integrador</strong></p>
+                
+                <h3>Integrantes:</h3>
+                <ul>
+                    <li>Gabriela Álvarez López</li>
+                    <li>Yael Romero Guadarrama</li>
+                    <li>Juan José Valdés Rodríguez</li>
+                </ul>
+
+                <h3>Docentes:</h3>
+                <ul>
+                    <li>Rosales González Rodrigo</li>
+                    <li>Pedraza Villalobos Hegel Emmanuel</li>
+                    <li>Cisneros Juárez Belén</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Video -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content video-modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Video - La Generación Z Atrapada en la Nostalgia</span>
+                <button class="close-btn" onclick="closeModal('videoModal')">×</button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div class="video-container">
+                    <iframe src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="videoFrame"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'block';
+            
+            // Si es el modal de video, cargar el video
+            if (modalId === 'videoModal') {
+                document.getElementById('videoFrame').src = 'https://www.youtube.com/embed/wJ6JtXAKRog';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+            
+            // Si es el modal de video, detener el video
+            if (modalId === 'videoModal') {
+                document.getElementById('videoFrame').src = '';
+            }
+        }
+
+        // Cerrar modal al hacer clic fuera de él
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let modal of modals) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    if (modal.id === 'videoModal') {
+                        document.getElementById('videoFrame').src = '';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
